@@ -1,0 +1,168 @@
+@media all and (max-width: 576px) {
+  .header {
+    height: 90vh;
+  }
+  .mainnavbar .nav-item {
+    margin-bottom: 10px;
+  }
+  .mainnavbar .navbar-collapse {
+    margin-top: 1.25rem;
+  }
+  .photo {
+    height: 18rem;
+    width: 18rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .photo::before {
+    content: " ";
+    position: absolute;
+    width: 17.2rem;
+    height: 14rem;
+    border-radius: 7.125rem;
+    left: 6px;
+    top: 33px;
+    background: linear-gradient(
+      180deg,
+      var(--color-border-pri),
+      var(--color-border-sec)
+    );
+    animation: border-animation 10s linear infinite;
+  }
+  .waves {
+    display: none;
+  }
+
+  .mainTitle p,
+  .txtcontent,
+  .changetxt {
+    font-size: 1.2rem;
+  }
+
+  .changetxt {
+    height: 31px;
+  }
+  .contact-btn .btn {
+    font-size: 13px;
+  }
+}
+
+@media all and (min-width: 576px) {
+  .card-columns {
+    column-count: 2;
+  }
+  .header {
+    height: 100vh;
+  }
+  .mainnavbar .nav-item {
+    margin-bottom: 10px;
+  }
+  .mainnavbar .navbar-collapse {
+    margin-top: 1.25rem;
+  }
+  .photo {
+    height: 18rem;
+    width: 18rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .photo::before {
+    content: " ";
+    position: absolute;
+    width: 17.2rem;
+    height: 14rem;
+    border-radius: 7.125rem;
+    left: 6px;
+    top: 33px;
+    background: linear-gradient(
+      180deg,
+      var(--color-border-pri),
+      var(--color-border-sec)
+    );
+    animation: border-animation 10s linear infinite;
+  }
+  .waves {
+    display: none;
+  }
+  .mainTitle {
+    justify-content: start;
+  }
+  .mainTitle p,
+  .txtcontent,
+  .changetxt {
+    font-size: 2rem;
+  }
+
+  .changetxt {
+    height: 48px;
+  }
+  .contact-btn .btn {
+    font-size: 17px;
+  }
+}
+
+@media all and (min-width: 768px) {
+  .waves {
+    display: block;
+  }
+  .card-columns {
+    column-count: 3;
+  }
+
+  .skill {
+    margin-top: -10rem;
+  }
+}
+@media all and (min-width: 992px) {
+  .mainnavbar .nav-item {
+    margin: 0px 0.7rem;
+    position: relative;
+  }
+  .mainnavbar .navbar-collapse {
+    margin-top: 0;
+  }
+  .mainnavbar .nav-item::before {
+    content: " ";
+    height: 2px;
+    width: 0;
+    background-color: var(--color-border-sec);
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transition: all 0.3s ease-in-out;
+  }
+  .mainnavbar .nav-item:hover::before,
+  .mainnavbar .nav-item:focus::before {
+    width: 100%;
+    left: 0;
+  }
+
+  .photo {
+    height: 21.875rem;
+    width: 21.875rem;
+  }
+  .photo::before {
+    width: 21.25rem;
+    height: 15rem;
+    left: 4px;
+    top: 3.438rem;
+  }
+  .mainTitle {
+    justify-content: center;
+  }
+  .mainTitle p,
+  .txtcontent,
+  .changetxt {
+    font-size: 2.4rem;
+  }
+  .changetxt {
+    height: 58px;
+  }
+}
+@media all and (min-width: 1200px) {
+  .mainTitle p,
+  .txtcontent,
+  .changetxt {
+    font-size: 3rem;
+  }
+}
