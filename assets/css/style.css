@@ -1,45 +1,45 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #1b0404;
-  }
-  
-  .form-group label {
-    color: white;
-    font-weight: bold;
-    margin-top: 1.563rem;
-  }
-  
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1b0404;
+}
+
+.form-group label {
+  color: white;
+  font-weight: bold;
+  margin-top: 1.563rem;
+}
+
+.main-form {
+  width: 100%;
+  max-width: 500px;
+  margin: 15px auto; /* Center the form horizontally */
+  padding: 20px;
+  background-color: #333;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#blogContainer .card {
+  margin-bottom: 20px;
+  width: 80%;
+  margin: 0 auto;
+ 
+}
+
+@media only screen and (max-width: 768px) {
   .main-form {
-    width: 100%;
-    max-width: 500px;
-    margin: 15px auto; /* Center the form horizontally */
-    padding: 20px;
-    background-color: #333;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    width: 90%;
   }
-  
-  #blogContainer .card {
-    margin-bottom: 20px;
-    width: 80%;
-    margin: 0 auto;
-   
+}
+
+@media only screen and (max-width: 480px) {
+  .main-form {
+    width: 90%;
   }
-  
-  @media only screen and (max-width: 768px) {
-    .main-form {
-      width: 90%;
-    }
-  }
-  
-  @media only screen and (max-width: 480px) {
-    .main-form {
-      width: 90%;
-    }
-  }
+}
