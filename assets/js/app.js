@@ -111,7 +111,7 @@ const onDelete = (ele) => {
   Swal.fire({
 
     title: "Are you sure?",
-    text: "Post will be deleted Pemanently",
+    text: "Post will be deleted Permanently!",
     icon: "warning",
     showCancelButton: true,
     confirmButtonColor: "#3085d6",
