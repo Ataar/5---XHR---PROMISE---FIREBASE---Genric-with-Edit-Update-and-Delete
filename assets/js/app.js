@@ -189,35 +189,96 @@ const onUpdate = () => {
   })
 }
    
-  
-
-
 const onDeleteBlog = (ele) => {
   return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      let data = false;
-      if (!data) {
-        let getId = ele.closest(".card").id;
+    // Show the confirmation dialog first
+    Swal.fire({
+      title: "Are you sure?",
+      text: "Post will be deleted permanently!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!"
+    }).then((result) => {
+      // If user confirmed the deletion
+      if (result.isConfirmed) {
+        let getId = ele.closest(".card").id; // Get the ID of the post to delete
         cl(getId);
-        allBlogs = allBlogs.filter((blog) => blog.id !== getId);
-        localStorage.setItem("allBlogs", JSON.stringify(allBlogs));
-        Snackbar("Blog Deleted Successfully!", "success");
-        resolve(allBlogs);
-        // displayPostBlogs(allBlogs);
+
+        // Simulate asynchronous deletion
+        setTimeout(() => {
+          // Filter out the deleted blog post
+          allBlogs = allBlogs.filter((blog) => blog.id !== getId);
+
+          // Update localStorage with the new array of blogs
+          localStorage.setItem("allBlogs", JSON.stringify(allBlogs));
+
+          // Show success snackbar
+          Snackbar("Blog Deleted Successfully!", "success");
+
+          // Show success notification after deletion
+          Swal.fire({
+            title: "Deleted!",
+            text: "Your blog post has been deleted.",
+            icon: "success",
+            timer: 1500,
+            showConfirmButton: false,
+          });
+
+          // Resolve the promise with the updated list of blogs
+          resolve(allBlogs);
+        }, 1000);
       } else {
-        reject("Blog not found");
+        reject("User canceled the deletion");
       }
-    }, 1000);
+    }).catch((error) => {
+      reject(error);
+    });
   })
-
-  .then(deleteBlog=>{
-
-    displayPostBlogs(deleteBlog);
-
+  .then((updatedBlogs) => {
+    // This part runs after successful deletion
+    displayPostBlogs(updatedBlogs);
   })
+  .catch((error) => {
+    // This part handles errors, such as user cancellation or other issues
+    console.error(error);
+    Snackbar("Failed to process request", "error");
+  });
+};
+
+
+
+// const onDeleteBlog = (ele) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       let data = false;
+//       if (!data) {
+//         let getId = ele.closest(".card").id;
+//         cl(getId);
+//         allBlogs = allBlogs.filter((blog) => blog.id !== getId);
+//         localStorage.setItem("allBlogs", JSON.stringify(allBlogs));
+//         Snackbar("Blog Deleted Successfully!", "success");
+//         resolve(allBlogs);
+//         // displayPostBlogs(allBlogs);
+//       } else {
+//         reject("Blog not found");
+//       }
+//     }, 1000);
+//   })
+
+//   .then(deleteBlog=>{
+
+//     displayPostBlogs(deleteBlog);
+
+//   })
+//   .catch(error=>{
+//     console.error(error);
+//     Snackbar("Failed to process request", "error");
+//   })
+// };
 
   
-};
 
 const displayPostBlogs = (arr) => {
   let result = "";
