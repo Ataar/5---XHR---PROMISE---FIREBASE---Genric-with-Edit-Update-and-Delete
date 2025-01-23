@@ -1,85 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Promise - Blog Task</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Async JS Inro - login task</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
-    <header class="head">Promise - Blog Task</header>     
-    <div class="container mt-5">
+    <div class="container">
       <div class="row">
         <div class="col-md-4 offset-md-4">
-          <form id="userPost" class="main-form">
+          <form id="signInForm">
             <div class="form-group">
-              <label for="title">Title</label>
-              <input type="text" id="title" class="form-control" required />
+              <label for="email">Email</label>
+              <input
+                type="email"
+                id="email"
+                placeholder="Email"
+                required
+                class="form-control"
+              />
             </div>
             <div class="form-group">
-              <label for="content">Content</label>
-              <textarea id="content" rows="4" class="form-control" required></textarea>
+              <label for="password">Password</label>
+              <input
+                type="password"
+                id="password"
+                placeholder="Password"
+                required
+                class="form-control"
+              />
+              <i class="fa-solid fa-eye" id="data"></i>
             </div>
+
             <div class="text-right">
-              <button type="submit" class="btn btn01" id="sBtn">Add Blog</button>
-              <button type="button" class="btn btn01 d-none" id="uBtn">Upadate Blog</button>
+              <button class="btn btn01">Sign Up</button>
             </div>
           </form>
         </div>
       </div>
-     
-     
-      <div id="blogContainer" class="row mt-4 d-flex flex-column-reverse" >
-        
-      </div>
     </div>
 
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
 
-   <script src="assets/js/app.js"></script>    
-</body>
+    <script src="assets/js/app.js"></script>
+  </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- <div class="container mt-5">
-      <div class="row">
-        <form id="userPost" class="main-form">
-          <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" id="title" class="form-control" required />
-          </div>
-          <div class="form-group">
-            <label for="content">Content</label>
-            <textarea id="content" rows="4" class="form-control" required></textarea>
-          </div>
-          <div class="text-right">
-            <button type="submit" class="btn btn01" id="sBtn">Add Blog</button>
-            <button type="button" class="btn btn01 d-none" id="uBtn">Upadate Blog</button>
-
-          </div>
-        </form>
-      </div>
-     
-     
-      <div id="blogContainer" class="row mt-4"></div>
-    </div>
-     -->
 

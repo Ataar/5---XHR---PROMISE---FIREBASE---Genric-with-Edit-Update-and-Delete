@@ -9,53 +9,67 @@
     font-family: Arial, sans-serif;
     background-color: #1b0404;
   }
-
-  .head
-  {
-    text-align: center;
-    color: #fff2f2;
-    font-size: 2.5rem;
-    margin-bottom: 2px;
-    font-weight: bold;
-    background-color: #db7cab;
-  }
   
+
+
+  .container
+  {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform:translate(-50% , -50%);
+  }
+ 
   .form-group label {
     color: white;
     font-weight: bold;
     margin-top: 1.563rem;
-  }
-  
-  
-  #blogContainer .card {
-    margin-bottom: 20px;
-    width: 80%;
-    margin: 0 auto;
    
   }
   
+  .fa-solid {
+    position: absolute;
+    bottom: 24%;
+    right: 6%;
+    color: rgba(226, 5, 5, 0.973);
+    font-size: 18px;
+
+}
+
   @media only screen and (max-width: 768px) {
-    .main-form {
-      width: 90%;
+    /* .main-form {
+      width: 80%;
       margin: 0 auto;
-    }
+    } */
+
+    .fa-solid {
+      position: absolute;
+      bottom: 24%;
+      right: 8%;
+      color: rgba(226, 5, 5, 0.973);
+      font-size: 18px;
+  
+  }
   }
   
   @media only screen and (max-width: 480px) {
-    header.head {
-      font-size:30px;
-      font-weight: bold;
-      background-color: #574d4d;
-      color: white;
-      padding: 10px;
-    }
-    .main-form {
-      width: 90%;
+  
+    /* .main-form {
+      width: 50%;
       margin: 0px auto;
     }
     .btn01 {
     margin-bottom: 50px;
-  }
+  } */
+
+  .fa-solid {
+    position: absolute;
+    bottom: 24%;
+    right: 6%;
+    color: rgba(226, 5, 5, 0.973);
+    font-size: 18px;
+
+}
 }
 
 
@@ -76,7 +90,7 @@
     content: "";
     position: absolute;
     top: 0;
-    left: -100%; /* Start completely off the button on the right */
+    left: -100%; /* Start completely off the button on the left */
     width: 100%;
     height: 100%;
     background: #db7cab;
