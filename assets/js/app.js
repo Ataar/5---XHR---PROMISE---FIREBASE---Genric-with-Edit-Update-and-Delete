@@ -1,64 +1,49 @@
 let cl = console.log;
 
-let signInForm = document.getElementById("signInForm");
-let email = document.getElementById("email");
-let password = document.getElementById("password");
-let passwordToggle = document.getElementById('data');
+const userForm = document.getElementById("userForm");
+const title = document.getElementById("title");
+const body = document.getElementById("body");
+const userId = document.getElementById("userId");
+const sBtn = document.getElementById("sBtn");
+const uBtn = document.getElementById("uBtn");
+const cardsContainer = document.getElementById("cardsContainer");
 
-const SnackBar = (msg, icon) => {
-    Swal.fire({
-        title: msg,
-        icon: icon,
-        timer: 1500,
-    });
-};
+let Base_Url = `https://jsonplaceholder.typicode.com/`;
+let Post_Url = `${Base_Url}/posts`;
 
-const signInObject = (eve) => {
-    eve.preventDefault();
+const temp = (arr=>{
+    let result = ''
+    arr.forEach(add=>{
+        result+=`
+           <div class="col-md-4">
+          <div class="card mb-3 text-center">
+            <div class="card-header">
+              <h3>${add.title}
+            </div>
+            <div class="card-body">
+                     ${add.body}
+            </div>
+            <div class="card-footer d-flex justify-content-between">
+              <button class="btn btn-primary">Edit</button>
+              <button class="btn btn-danger">Delete</button>
+            </div>
+          </div>
+         </div>
+        
+        `
+        cardsContainer.innerHTML = result
+    })
+})
 
-    let newObj = {
-        emailIdVal: email.value,
-        passwordVal: password.value,
-    };
-
-    signObjectApi(newObj);
-};
-
-const signObjectApi = (blog) => {
-    // This function is used for API call to check email & password from database.
-    setTimeout(() => {
-        if (blog.emailIdVal === "mateen@gmail.com" && blog.passwordVal === "7058") {
-            SnackBar("Login Successfully", "success");
-            setTimeout(() => {
-                window.location.href = "https://callback-function-dynamic.vercel.app/";
-            }, 1500); // Redirect after the SnackBar timer
-        } else {
-            SnackBar("Invalid Email or Password", "error");
-        }
-        signInForm.reset();
-    }, 1000);
-};
-
-const onPassword = () => {
-    const isPasswordVisible = password.type === 'password';
-    password.type = isPasswordVisible ? 'text' : 'password';  // here ternary operator is used as if else
-    passwordToggle.classList.toggle('fa-eye-slash', isPasswordVisible); 
-    passwordToggle.classList.toggle('fa-eye', !isPasswordVisible);     
-    
-    
-    // if (isPasswordVisible) {
-    //     passwordToggle.classList.add('fa-eye-slash')  // if input field is password means it is hidden so add "fa-eye-slash" class to visible input field value
-    //     passwordToggle.classList.remove('fa-eye')
-    //     password.type = 'text';
-    // } else {
-    //     passwordToggle.classList.add('fa-eye')     // if input field is text means it is visible so add 'fa-eye' class to hide input field value
-    //     passwordToggle.classList.remove('fa-eye-slash')
-    //     password.type = 'password';
-    // }
-
-
-
-};
-
-signInForm.addEventListener("submit", signInObject);
-passwordToggle.addEventListener('click', onPassword);
+let xhr = new XMLHttpRequest()
+xhr.open('GET',Post_Url,true)
+xhr.send(null)
+xhr.onload = function()
+{
+    if(xhr.status>=200 && xhr.status<=299)
+    {
+       let data = JSON.parse(xhr.response)
+       cl(data)
+       temp(data)
+    }
+}

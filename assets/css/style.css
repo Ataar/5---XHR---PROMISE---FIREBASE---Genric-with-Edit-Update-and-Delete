@@ -10,37 +10,34 @@
     background-color: #1b0404;
   }
   
-
-
-  .container
+  .text
   {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform:translate(-50% , -50%);
+    text-align: center;
+    background-color: rgb(253, 41, 140);
+    padding:12px;
+    font-size: 22px;
+    letter-spacing: 6px;
+    font-family: Georgia;
+    color: white;
+
   }
+
  
   .form-group label {
     color: white;
     font-weight: bold;
-    margin-top: 1.563rem;
+    margin-top: 0.25rem;
    
   }
-  
-  .fa-solid {
-    position: absolute;
-    bottom: 24%;
-    right: 6%;
-    color: rgba(226, 5, 5, 0.973);
-    font-size: 18px;
 
-}
 
-  @media only screen and (max-width: 768px) {
-    /* .main-form {
+
+
+  /* @media only screen and (max-width: 768px) {
+    .main-form {
       width: 80%;
       margin: 0 auto;
-    } */
+    }
 
     .fa-solid {
       position: absolute;
@@ -50,17 +47,17 @@
       font-size: 18px;
   
   }
-  }
+  } */
   
-  @media only screen and (max-width: 480px) {
+  /* @media only screen and (max-width: 480px) {
   
-    /* .main-form {
-      width: 50%;
+    #userForm {
+      width: 100%;
       margin: 0px auto;
     }
     .btn01 {
     margin-bottom: 50px;
-  } */
+  }
 
   .fa-solid {
     position: absolute;
@@ -70,7 +67,7 @@
     font-size: 18px;
 
 }
-}
+} */
 
 
 
@@ -93,7 +90,7 @@
     left: -100%; /* Start completely off the button on the left */
     width: 100%;
     height: 100%;
-    background: #db7cab;
+    background: #c559cf;
     z-index: -1;
     transition: left 0.3s ease-in-out; /* Slide smoothly */
     cursor: pointer; /* Enable pointer cursor */
@@ -109,3 +106,38 @@
     cursor: pointer;
   }
   
+.card {
+  width: 300px;
+  height: 95%;
+}
+
+@media only screen and (max-width: 768px) {
+  .card {
+    width: 110%;
+    margin: 0 auto;
+    height:95%;
+    padding:0
+  }
+}
+
+@media only screen and (max-width: 480px) {
+ .card {
+    width: 100%;
+    margin: 0 auto;
+    height:95%;
+    padding:0
+  }
+}
+
+
+.card-header
+{
+  background-color: #f76caa;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+.card-header h3 {
+  font-weight: bold;
+  font-size: 18px;
+}
