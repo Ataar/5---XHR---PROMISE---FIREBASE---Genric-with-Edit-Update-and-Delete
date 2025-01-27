@@ -35,15 +35,20 @@ const temp = (arr=>{
     })
 })
 
-let xhr = new XMLHttpRequest()
-xhr.open('GET',Post_Url,true)
-xhr.send(null)
-xhr.onload = function()
-{
-    if(xhr.status>=200 && xhr.status<=299)
-    {
-       let data = JSON.parse(xhr.response)
-       cl(data)
-       temp(data)
-    }
+const getDatathroughAPI =  () => {  
+
+  let xhr = new XMLHttpRequest()
+  xhr.open('GET',Post_Url,true)
+  xhr.send(null)
+  xhr.onload = function()
+  {
+      if(xhr.status>=200 && xhr.status<=299)
+      {
+         let data = JSON.parse(xhr.response)
+         cl(data)
+         temp(data)
+      }
+  }
 }
+  
+getDatathroughAPI()
