@@ -118,10 +118,19 @@
   .card {
     width: 75%;
     margin: 0 auto;
-    height: 70vh; /* Use viewport height for better responsiveness */
+    height: 62vh; /* Use viewport height for better responsiveness */
     padding: 0;
     font-size: 14px;
   }
+
+   .card-body
+  {
+    padding: 10px 7px;
+    text-align:center;
+    
+    
+  }
+
 }
 
  
@@ -130,17 +139,21 @@
 {
 
     .card{
-        height: 66vh;
+        height: 61vh;
+        
     }
   .card-header ,.card-body
   {
     font-size:12px;
+    padding:12px
+    
     
   }
   .card-body
   {
     padding: 20px;
     text-align: justify;
+    
    
   }
 }
