@@ -78,7 +78,7 @@ body {
 }
 
 /* Remove Extra Space Below Text */
-.card-body p:last-child {
+.card-body {
   margin-bottom: 0;
 }
 
