@@ -173,7 +173,7 @@
 {
 
     .card{
-        height: 60vh;
+        height: 50vh;
         
     }
   .card-header
@@ -185,7 +185,7 @@
   }
   .card-body
   {
-    font-size:12px;
+    font-size:10px;
     padding: 12px;
     text-align:center;
     
