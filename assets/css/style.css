@@ -112,7 +112,7 @@
   .card {
     width: 100%;
     /* margin: 0 auto; */
-    height:43vh;
+    height:25vh;
     /* height:95%; */
     /* padding:0; */
   }
@@ -120,6 +120,23 @@
   {
     font-size:12px;
     padding:4px 5px
+
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .card {
+    width: 100%;
+    /* margin: 0 auto; */
+    height:45vh;
+    /* height:95%; */
+    /* padding:0; */
+  }
+  .card-body
+  {
+    font-size:12px;
+    padding:3px 6px
 
   }
 }
