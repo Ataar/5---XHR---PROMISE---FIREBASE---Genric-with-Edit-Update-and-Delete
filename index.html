@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>XHR - CRUD</title>
+    <title>XHR - Firebase</title>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css"
@@ -25,58 +25,58 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
-    <header class="text">XMLHttpRequest</header>
-     <div class="container mt-3">
-      <div class="row">
+    <div class="container mt-3">
+      <div class="rwo">
         <div class="col-md-4 offset-md-4">
-
-          <form id="userForm">
+          <form id="userData">
             <div class="form-group">
               <label for="title">Title</label>
-              <input type="text" required class="form-control" id="title">
+              <input type="text" id="title" class="form-control" />
+            </div>
+            <div class="form-group">
+              <label for="body">Content</label>
+              <textarea rows="4" class="form-control" id="body"></textarea>
             </div>
 
-             <div class="form-group">
-              <label for="body">Content</label>
-               <textarea  id="body" required rows="4" class="form-control"></textarea>
-             </div>
-
             <div class="form-group">
-              <label for="text">UserId</label>
-              <select  id="userId" class="form-control">
+              <label for="userId">UserId</label>
+              <select class="form-control" id="userId">
                 <option value="1">1</option>
                 <option value="2">2</option>
                 <option value="3">3</option>
                 <option value="4">4</option>
                 <option value="5">5</option>
-                <option value="6">6</option>
               </select>
             </div>
 
-             <div class="text-right my-3">
+            <div class="text-right my-3">
               <button class="btn btn01" id="sBtn" type="submit">Submit</button>
-              <button class="btn btn01 d-none" type="button" id="uBtn">Update</button>
-             </div>
-
+              <button class="btn btn01 d-none" id="uBtn" type="button">
+                Update
+              </button>
+            </div>
+          </form>
         </div>
-      </form>
+      </div>
+      
+      
+      <div class="loader d-none" id="loader">
+        <div class="spinner-border text-primary" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      
+      <div id="dataContainer" class="d-flex flex-column-reverse">
+      </div>  
+      
+      
     </div>
-    <div id="cardsContainer" class="row d-flex flex-wrap-reverse">   
-     
-    </div>
-
-    </div>
-    
-  
-  
-    
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.all.min.js"></script>
 
     <script src="assets/js/app.js"></script>
   </body>
 </html>
-   <!-- d-flex flex-wrap-reverse -->
-              <!-- <div class="card">
+<!-- d-flex flex-wrap-reverse -->
+<!-- <div class="card">
                 <div class="card-header">
 
                 </div>
