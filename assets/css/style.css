@@ -1,205 +1,152 @@
-
 * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    
-  }
-  
-  
-  
-  body {
-    font-family: Arial, sans-serif;
-    background: rgb(6, 7, 6);
-  }
-    
-    
+body {
+  font-family: Arial, sans-serif;
+  background: rgb(6, 7, 6);
+}
 
+/* Form Labels */
+.form-group label {
+  color: white;
+  font-weight: bold;
+  margin-top: 0.25rem;
+}
 
+/* Button Styles */
+.btn01 {
+  position: relative;
+  overflow: hidden;
+  color: #def7e7;
+  border: 1px solid #e76caa;
+  z-index: 1;
+  transition: color 0.3s ease-in-out;
+  font-family: Georgia;
+  font-weight: bold;
+  cursor: pointer;
+}
 
+.btn01::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: #e76caa;
+  z-index: -1;
+  transition: left 0.3s ease-in-out;
+}
 
- 
-  .form-group label 
-  {
-    color: white;
-    font-weight: bold;
-    margin-top: 0.25rem;
-   
-  }
+.btn01:hover::before {
+  left: 0;
+}
 
+.btn01:hover {
+  color: white;
+}
 
+/* Card Styling */
+.card {
+  width: 338px;
+  min-height: auto; /* Adjust height dynamically */
+  height: auto; /* Prevent excessive space */
+  text-align: center;
+  font-size: 16px;
+  margin: 0 auto;
+  overflow: hidden; /* Ensure no extra spacing */
+}
 
-  .btn01 
-  {
-    position: relative;
-    overflow: hidden;
-    color: #def7e7;
-    border: 1px solid #e76caa;
-    z-index: 1;
-    transition: color 0.3s ease-in-out;
-    font-family: Georgia;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  
-  .btn01::before 
-  {
-  
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -100%; /* Start completely off the button on the left */
-    width: 100%;
-    height: 100%;
-    background:#e76caa;
-    z-index: -1;
-    transition: left 0.3s ease-in-out; /* Slide smoothly */
-    cursor: pointer; /* Enable pointer cursor */
-  }
-  
-  .btn01:hover::before 
-  {
-    left: 0; /* Slide in fully to cover the button */
-    cursor: pointer;
-  }
-  
-  .btn01:hover
-   {
-    color: white; /* Change text color to white */
-    cursor: pointer;
-  }
-
-
-  
-  
-.card 
-{
-    width: 338px;
-  /* height: 95%; */
-    height:56vh;
-    /* text-align:justify; */
-    text-align: center;
-    font-size: 16px;
-    margin: 0 auto;
-    
-  }
-
-
-
-  .card-header
-{
+/* Card Header */
+.card-header {
   background-color: #382c32;
-  /* background-color: #f76caa; */
   color: white;
   text-align: center;
-  font-family: georgia;
+  font-family: Georgia;
   font-weight: bold;
+  padding: 10px; /* Adjust padding */
 }
 
-.card-body
-{
+/* Card Body */
+.card-body {
   font-size: 17px;
-  padding: 15px 14px;
-  font-family:cursive;
-   }
-  
+  padding: 10px 12px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
 
+/* Remove Extra Space Below Text */
+.card-body p:last-child {
+  margin-bottom: 0;
+}
 
-
+/* Responsive Design */
 @media only screen and (max-width: 1024px) {
   .card {
-    width: 100%;
-    /* margin: 0 auto; */
-    height:25vh;
-    /* height:95%; */
-    /* padding:0; */
+      width: 100%;
+      min-height: auto;
+      height: auto;
   }
-  .card-body
-  {
-    font-size:12px;
-    padding:4px 5px
 
+  .card-body {
+      font-size: 12px;
+      padding: 4px 5px;
   }
 }
-
 
 @media only screen and (max-width: 768px) {
   .card {
-    width: 100%;
-    /* margin: 0 auto; */
-    height:45vh;
-    /* height:95%; */
-    /* padding:0; */
+      width: 100%;
+      min-height: auto;
+      height: auto;
   }
-  .card-body
-  {
-    font-size:12px;
-    padding:3px 6px
 
+  .card-body {
+      font-size: 12px;
+      padding: 3px 6px;
   }
 }
 
-
-@media only screen and (max-width: 480px) 
-{
+@media only screen and (max-width: 480px) {
   .card {
-    width: 75%;
-    height: 62vh; /* Use viewport height for better responsiveness */
-    
+      width: 75%;
+      min-height: auto;
+      height: auto;
   }
 
-  .card-header
-  {
-    font-size: 12px;
-  }
-    
-
-   .card-body
-  {
-    padding: 20px 20px;
-    text-align:center;
-    font-size:0.875rem;
-    
-    
+  .card-header {
+      font-size: 12px;
   }
 
-}
-
- 
-
-@media only screen and (max-width:320px)
-{
-
-    .card{
-      width:80%;
-        height: 50vh;
-        
-    }
-  .card-header
-  {
-    font-size:15px;
-    padding:12px
-    
-    
-  }
-  .card-body
-  {
-    font-size:10px;
-    padding: 12px;
-    text-align:center;
-    
-   
+  .card-body {
+      padding: 10px 10px;
+      font-size: 0.875rem;
   }
 }
-  
-   
 
+@media only screen and (max-width: 320px) {
+  .card {
+      width: 80%;
+      min-height: auto;
+      height: auto;
+  }
 
+  .card-header {
+      font-size: 15px;
+      padding: 12px;
+  }
 
-#loader
-{
+  .card-body {
+      font-size: 10px;
+      padding: 12px;
+      text-align: center;
+  }
+}
+
+/* Loader */
+#loader {
   position: fixed;
   top: 0;
   left: 0;
@@ -210,46 +157,3 @@
   align-items: center;
   background-color: rgba(255, 255, 255, 0.9);
 }
-
-
-
-
-
-
-
-
-  /* @media only screen and (max-width: 768px) {
-    .main-form {
-      width: 80%;
-      margin: 0 auto;
-    }
-
-    .fa-solid {
-      position: absolute;
-      bottom: 24%;
-      right: 8%;
-      color: rgba(226, 5, 5, 0.973);
-      font-size: 18px;
-  
-  }
-  } */
-  
-  /* @media only screen and (max-width: 480px) {
-  
-    #userForm {
-      width: 100%;
-      margin: 0px auto;
-    }
-    .btn01 {
-    margin-bottom: 50px;
-  }
-
-  .fa-solid {
-    position: absolute;
-    bottom: 24%;
-    right: 6%;
-    color: rgba(226, 5, 5, 0.973);
-    font-size: 18px;
-
-}
-} */
