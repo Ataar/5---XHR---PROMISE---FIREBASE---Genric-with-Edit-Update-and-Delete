@@ -10,6 +10,7 @@ body {
 }
 
 
+
 .form-group label {
   color: white;
   font-weight: bold;
@@ -109,6 +110,14 @@ body {
 }
 
 @media only screen and (max-width: 480px) {
+
+  .userData
+  {
+    width:80%;
+    margin:0 auto;
+  }
+  
+    
   .card {
       width: 70%;
       min-height: auto;
@@ -126,6 +135,13 @@ body {
 }
 
 @media only screen and (max-width: 320px) {
+
+  .userData
+{
+  width:90%;
+  margin:0 auto;
+}
+
   .card {
       width: 80%;
       min-height: auto;

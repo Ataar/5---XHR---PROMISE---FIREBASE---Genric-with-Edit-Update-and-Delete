@@ -3,10 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>XHR Genric Using Firebase</title>
+    <title>XHR -HTTP - PROMISE - Firebase GET and CREATE</title>
     <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.32/dist/sweetalert2.min.css" /> -->
-       <!-- SweetAlert2 CSS -->
-       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css">
+    <!-- SweetAlert2 CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.min.css"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
@@ -27,14 +30,19 @@
     <div class="container mt-3">
       <div class="row">
         <div class="col-md-4 offset-md-4">
-          <form id="userData">
+          <form id="userData" class="userData">
             <div class="form-group">
               <label for="title">Title</label>
-              <input type="text" id="title" class="form-control"  required />
+              <input type="text" id="title" class="form-control" required />
             </div>
             <div class="form-group">
               <label for="body">Content</label>
-              <textarea rows="4" class="form-control" id="body" required></textarea>
+              <textarea
+                rows="4"
+                class="form-control"
+                id="body"
+                required
+              ></textarea>
             </div>
 
             <div class="form-group">
@@ -58,36 +66,17 @@
           </form>
         </div>
       </div>
-      
-      
+
       <div class="loader d-none" id="loader">
         <div class="spinner-border text-primary" role="status">
           <span class="sr-only">Loading...</span>
         </div>
       </div>
-      
-      <div id="dataContainer" class=" row  d-flex flex-column-reverse">
-       
-      </div>  
-      
-      
-      
+
+      <div id="dataContainer" class="row d-flex flex-column-reverse"></div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.5/dist/sweetalert2.all.min.js"></script>
     <script src="assets/js/app.js"></script>
   </body>
 </html>
 
-<!-- d-flex flex-wrap-reverse -->
-<!-- <div class="card">
-                <div class="card-header">
-
-                </div>
-                <div class="card-body">
-
-                </div>
-                <div class="card-footer d-flex justify-content-between">
-                  <button class="btn btn-primary" onclick="onEdit(this)">Edit</button>
-                  <button class="btn btn-danger" onclick="onDelete(this)">Delete</button>
-                </div>
-              </div> -->
