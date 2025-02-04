@@ -9,14 +9,14 @@ body {
   background: rgb(6, 7, 6);
 }
 
-/* Form Labels */
+
 .form-group label {
   color: white;
   font-weight: bold;
   margin-top: 0.25rem;
 }
 
-/* Button Styles */
+
 .btn01 {
   position: relative;
   overflow: hidden;
@@ -49,43 +49,42 @@ body {
   color: white;
 }
 
-/* Card Styling */
 .card {
   width: 338px;
-  min-height: auto; /* Adjust height dynamically */
-  height: auto; /* Prevent excessive space */
+  min-height: auto; 
+  height: auto; 
   text-align: center;
   font-size: 16px;
-  margin: 0 auto;
-  overflow: hidden; /* Ensure no extra spacing */
+  margin: 16px auto;
+  overflow: hidden; 
 }
 
-/* Card Header */
+
 .card-header {
   background-color: #382c32;
   color: white;
   text-align: center;
   font-family: Georgia;
   font-weight: bold;
-  padding: 10px; /* Adjust padding */
+  padding: 10px; 
 }
 
-/* Card Body */
+
 .card-body {
   font-size: 17px;
   padding: 10px 12px;
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
-/* Remove Extra Space Below Text */
+
 .card-body {
   margin-bottom: 0;
 }
 
-/* Responsive Design */
+
 @media only screen and (max-width: 1024px) {
   .card {
-      width: 100%;
+      width: 40%;
       min-height: auto;
       height: auto;
   }
@@ -98,7 +97,7 @@ body {
 
 @media only screen and (max-width: 768px) {
   .card {
-      width: 100%;
+      width: 40%;
       min-height: auto;
       height: auto;
   }
@@ -111,13 +110,13 @@ body {
 
 @media only screen and (max-width: 480px) {
   .card {
-      width: 75%;
+      width: 70%;
       min-height: auto;
       height: auto;
   }
 
-  .card-header {
-      font-size: 12px;
+  .card-header h5 {
+      font-size: 15px;
   }
 
   .card-body {
@@ -133,9 +132,9 @@ body {
       height: auto;
   }
 
-  .card-header {
-      font-size: 15px;
-      padding: 12px;
+.card-header h5 {
+      font-size: 13px;
+      padding:0px;
   }
 
   .card-body {
@@ -145,7 +144,7 @@ body {
   }
 }
 
-/* Loader */
+
 #loader {
   position: fixed;
   top: 0;
