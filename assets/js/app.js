@@ -9,7 +9,7 @@ const uBtn = document.getElementById("uBtn");
 const dataContainer = document.getElementById("dataContainer");
 const loader = document.getElementById("loader");
 
-const Base_Url = `https://xhr-firebase---get-and-p-7b428-default-rtdb.firebaseio.com`;
+const Base_Url = `https://xhr--http---promise---firebase-default-rtdb.firebaseio.com/`;
 const Post_Url = `${Base_Url}/posts.json`;
 
 const snackBar = (title, iconHtml, bgColor = "#439643", color = "#fff") => {
@@ -32,30 +32,73 @@ const snackBar = (title, iconHtml, bgColor = "#439643", color = "#fff") => {
   });
 };
 
-const onsendObjToDB = (eve) => {
-  eve.preventDefault();
-  let newObj = {
-    title: title.value,
-    body: body.value,
-    userId: userId.value,
-  };
-  cl(newObj);
-  userData.reset();
 
-  snackBar("Added Successfully", "✅", "#28a745");
 
-  makeApiCall("POST", Post_Url, newObj, (err, data) => {
-    if (!err) {
-      createCard(newObj, data);
-    } else {
-      snackBar("Something went wrong", "❌", "#d33");
-    }
-  });
-};
+const makeApiCall = (methodName , apiUrl , body = null)=>{  // this is genric function for API Call
+return new Promise((resolve,reject)=>{
+  loader.classList.remove('d-none')
+  let xhr = new XMLHttpRequest();
+  xhr.open(methodName , apiUrl);
+  xhr.setRequestHeader("Authorization","JWT ACCESS_TOKEN FROM_LOCAL_STORAGE");
+  xhr.setRequestHeader("Content-type","application/json");
+  xhr.onload = function()
+  {
+         loader.classList.add('d-none')
+     if(xhr.status>=200 && xhr.status<=299)
+     {
+        let data = JSON.parse(xhr.response);
+        resolve(data)
+     }
+
+     else
+     {
+        reject(xhr.statusText)
+        snackBar("Something went wrong", "❌", "#d33");
+     }
+  }
+
+  xhr.send(body ? JSON.stringify(body): null);
+
+  xhr.onerror = function()
+  {
+    
+    loader.classList.add('d-none')
+    reject(`Network Error`)
+  }
+})
+}
+
+
+makeApiCall('GET',Post_Url , null)
+
+.then(res=>{
+ let data = objToarr(res)
+ temp(data)
+ cl(data)
+  
+})
+
+.catch(err=>{
+  cl(err)
+})
+
+
+// we call a function that retrun promise but not consume it still the API call is getting success 
+// so this behavior of promise is called Eager behavior.
+
+
+
+const objToarr = (obj)=>Object.keys(obj).map(key=>({...obj[key] , id: key}))
+ 
+ 
+
+
+
+
 
 const temp = (arr) => {
   let result = "";
-  arr.forEach((add) => {
+  arr.forEach(add => {
     result += `
             
             <div class="card" id ='${add.id}'>
@@ -77,6 +120,9 @@ const temp = (arr) => {
   });
   dataContainer.innerHTML = result;
 };
+
+
+
 
 const createCard = (obj, data) => {
   let card = document.createElement("div");
@@ -104,123 +150,104 @@ const createCard = (obj, data) => {
   dataContainer.append(card);
 };
 
-const makeApiCall = (methodName, apiUrl, msgBody = null, cbFun = () => {}) => {
-  // we give the method name , Url and send body or data form outside the makeapi function.
 
-  loader.classList.remove("d-none"); //start a loader because ApiCall is going to start
 
-  let xhr = new XMLHttpRequest(); // it is API Call to get data
 
-  xhr.open(methodName, apiUrl, true);
 
-  xhr.send(msgBody ? JSON.stringify(msgBody) : null); // if data is null means falsy so xhr returns null and if data is object so xhr will send object into
-  // DB by convering json.stringify() method.
 
-  xhr.onload = () => {
-    loader.classList.add("d-none");
-    // If we get a response, whether it is a success or an error so stop the loader
 
-    if (xhr.status >= 200 && xhr.status < 299) {
-      let data = JSON.parse(xhr.response);
-      cbFun(null, data);
-      // null means no eror
-    } else {
-      cbFun(new Error(`HTTP Error ${xhr.status}`));
-      //here we have to create custom error so we have a Constructor function i.e 'new Error'
-      // and HTTP Error is a backend error.
-      // If we get an error, we won't get the data.
-    }
-  };
 
-  xhr.onerror = () => {
-    // it is also a network error
 
-    loader.classList.add("d-none");
-    cbFun(new Error(`HTTP Error ${xhr.status}`));
-  };
-};
+const sendObjToDB = (eve)=>{
+  eve.preventDefault();
 
-const fetchAllDatafromDB = () => {
-  makeApiCall("GET", Post_Url, null, (err, data) => {
-    if (!err) {
-      let arr = objToarr(data);
-      temp(arr);
-    } else {
-      cl(err);
-    }
-  });
-};
-
-fetchAllDatafromDB();
-
-let postArr = [];
-
-const objToarr = (obj) => {
-  for (let key in obj) {
-    postArr.push({ ...obj[key], id: key });
+  let newObj = 
+  {
+     title: title.value,
+     body: body.value,
+     userId: userId.value,
   }
-  return postArr;
-};
+  cl(newObj)
+  userData.reset()
 
-let onEdit = (ele) => {
-  let Edit_ID = ele.closest(".card").id;
+   makeApiCall('POST' , Post_Url , newObj)
 
-  localStorage.setItem("edit", Edit_ID);
+   .then(res=>{
+    snackBar("Added Successfully", "✅", "#28a745");
+
+     createCard(newObj, res)
+   })
+
+   .catch(err=>{
+     cl(err)
+   })
+}
+
+
+
+
+
+const onEdit = (ele)=>{
+  let Edit_ID = ele.closest('.card').id;
+  localStorage.setItem('editId',Edit_ID);
 
   let Edit_URL = `${Base_Url}/posts/${Edit_ID}.json`;
 
-  makeApiCall("GET", Edit_URL, null, (err, data) => {
-    if (!err) {
-      title.value = data.title;
-      body.value = data.body;
-      userId.value = data.userId;
-      sBtn.classList.add("d-none");
-      uBtn.classList.remove("d-none");
-      const scroll = () => {
-        userData.scrollIntoView({ block: "end", behavior: "instant" });
-      };
-      scroll();
-    } else {
-      cl(err);
-    }
-  });
-};
+  makeApiCall('GET',Edit_URL , null)
 
-const onUpdate = () => {
-  let newUpdateobj = {
-    title: title.value,
-    body: body.value,
-    userId: userId.value,
-  };
-  let getUpdate_ID = localStorage.getItem("edit");
+  .then(res=>{
+     title.value = res.title,
+     body.value = res.body,
+     userId.value = res.userId,
+     sBtn.classList.add('d-none')
+     uBtn.classList.remove('d-none')
+  })
+  
+}
 
-  cl(getUpdate_ID);
 
-  let getupdate_URL = `${Base_Url}/posts/${getUpdate_ID}.json`;
-  cl(getupdate_URL);
 
-  makeApiCall("PATCH", getupdate_URL, newUpdateobj, (err, data) => {
-    if (!err) {
-      let card = document.getElementById(getUpdate_ID).children;
-      card[0].innerHTML = `<h5>${newUpdateobj.title}</h5>`;
-      card[1].innerHTML = `<p>${newUpdateobj.body}</p>`;
-      sBtn.classList.remove("d-none");
-      uBtn.classList.add("d-none");
-      userData.reset();
-      snackBar("Updated Successfully", "✏️", "#e9376c");
-    } else {
-      snackBar("Something went wrong", "❌", "#d33");
-    }
-  });
-};
+
+const onUpadte = ()=>{
+
+ let updateObj = 
+ {
+    title:title.value,
+    body:body.value,
+    userId:userId.value
+ }
+ cl(updateObj)
+
+   userData.reset()
+
+ let update_ID = localStorage.getItem('editId');
+ 
+ let update_URL = `${Base_Url}/posts/${update_ID}.json`
+ cl(update_URL)
+
+ makeApiCall('PATCH', update_URL ,  updateObj)
+ .then(res=>{
+
+    let data = document.getElementById(update_ID).children
+    data[0].innerHTML = ` <h5>${res.title}</h5>`;
+    data[1].innerHTML = ` <p>${res.body}</p>`;
+    sBtn.classList.remove('d-none');
+    uBtn.classList.add('d-none');
+    snackBar("Updated Successfully", "✏️", "#e9376c");
+
+ })
+
+ .catch(err=>{
+  cl(err)
+ })
+
+}
+
+
 
 const onDelete = (ele) => {
-  cl(ele);
-  let delete_ID = ele.closest(".card").id;
-  cl(delete_ID);
-
-  let delete_URL = `${Base_Url}/posts/${delete_ID}.json`;
-  cl(delete_URL);
+  let getDel_ID = ele.closest('.card').id;
+  let getDel_URL = `${Base_Url}/posts/${getDel_ID}.json`;
 
   Swal.fire({
     title: "Are you sure?",
@@ -230,25 +257,27 @@ const onDelete = (ele) => {
     confirmButtonColor: "#3085d6",
     cancelButtonColor: "#d33",
     confirmButtonText: "Yes, delete it!",
-    cancelButtonText: "Cancel", // Custom text for the cancel button
-  }).then((result) => {
+    cancelButtonText: "Cancel",
+  })
+  .then((result) => {
     if (result.isConfirmed) {
-      makeApiCall("DELETE", delete_URL, null, (err) => {
-        if (!err) {
-          let card = ele.closest(".card");
-          card.remove(); // Remove the DOM element directly
+      makeApiCall('DELETE', getDel_URL, null)
+      .then(() => {
+          let data = ele.closest('.card');
+          data.remove();
           snackBar("Deleted Successfully", "✅");
-        } else {
-          cl(err);
-
+        
+    })
+        .catch(error => {
+          cl(error);
           snackBar("Something went wrong", "❌", "#d33");
-        }
-      });
+        });
     } else if (result.dismiss === Swal.DismissReason.cancel) {
       snackBar("Action Cancelled", "ℹ️", "#334755");
     }
   });
 };
 
-userData.addEventListener("submit", onsendObjToDB);
-uBtn.addEventListener("click", onUpdate);
+
+userData.addEventListener('submit',sendObjToDB)
+uBtn.addEventListener('click',onUpadte)
