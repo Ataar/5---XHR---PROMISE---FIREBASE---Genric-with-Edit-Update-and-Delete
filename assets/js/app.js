@@ -207,6 +207,14 @@ const sendObjToDB = (eve)=>{
 
 
 
+ // Function to hide and show the submit and update button.
+
+const submitToUpdateBtn = ((ele,show)=>{
+  show ? ele.classList.remove('d-none') : ele.classList.add('d-none')
+})
+
+
+
 
 
 const onEdit = (ele)=>{
@@ -221,16 +229,23 @@ const onEdit = (ele)=>{
      title.value = res.title;
      body.value = res.body;
      userId.value = res.userId;
-     sBtn.classList.add('d-none');
-     uBtn.classList.remove('d-none');
+     submitToUpdateBtn(uBtn , true)
+     submitToUpdateBtn(sBtn , false)
+     
+    //  sBtn.classList.add('d-none');
+    //  uBtn.classList.remove('d-none');
+
+
+
+
      const scroll = () => userData.scrollIntoView({ block: "end", behavior: "instant" });
      scroll();
      //  const scroll = ()=>userData.scrollIntoView()
      //  scroll() 
+    })
+  }
     
-  })
   
-}
 
 
 
@@ -258,8 +273,10 @@ const onUpadte = ()=>{
     let data = document.getElementById(update_ID).children
     data[0].innerHTML = ` <h5>${res.title}</h5>`;
     data[1].innerHTML = ` <p>${res.body}</p>`;
-    sBtn.classList.remove('d-none');
-    uBtn.classList.add('d-none');
+    submitToUpdateBtn(sBtn , true)
+    submitToUpdateBtn(uBtn , false)
+    // sBtn.classList.remove('d-none');
+    // uBtn.classList.add('d-none');
     snackBar("Updated Successfully", "✏️", "#e9376c");
 
  })
