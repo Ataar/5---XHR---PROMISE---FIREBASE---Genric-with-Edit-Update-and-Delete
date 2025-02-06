@@ -34,16 +34,36 @@ const snackBar = (title, iconHtml, bgColor = "#439643", color = "#fff") => {
 
 
 
+
+
+//  Function For Loader:-
+
+const Hide_Show = (element, show) => {  // element parameter represent element and show parameter represent true and false 
+
+  show ? element.classList.remove("d-none") : element.classList.add("d-none");
+ // if an argument of show parameter is true then remove class otherwise add class if show parameter is flase 
+
+  // if (show) { 
+  //   element.classList.remove("d-none"); // Remove the "d-none" class → Show the element
+  // } else {
+  //   element.classList.add("d-none"); // Add the "d-none" class → Hide the element
+  // }
+  
+};
+
+
+
+
 const makeApiCall = (methodName , apiUrl , body = null)=>{  // this is genric function for API Call
 return new Promise((resolve,reject)=>{
-  loader.classList.remove('d-none')
+  Hide_Show(loader, true); // Show loader
   let xhr = new XMLHttpRequest();
   xhr.open(methodName , apiUrl);
   xhr.setRequestHeader("Authorization","JWT ACCESS_TOKEN FROM_LOCAL_STORAGE");
   xhr.setRequestHeader("Content-type","application/json");
   xhr.onload = function()
   {
-         loader.classList.add('d-none')
+    Hide_Show(loader, false); // Hide loader
      if(xhr.status>=200 && xhr.status<=299)
      {
         let data = JSON.parse(xhr.response);
@@ -62,7 +82,8 @@ return new Promise((resolve,reject)=>{
   xhr.onerror = function()
   {
     
-    loader.classList.add('d-none')
+    
+    Hide_Show(loader, false); // Hide loader
     reject(`Network Error`)
     snackBar("Network Error", "❌", "#d33");
   }
