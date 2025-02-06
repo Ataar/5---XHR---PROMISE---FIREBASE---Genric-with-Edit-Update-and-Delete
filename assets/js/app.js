@@ -14,7 +14,7 @@ const Post_Url = `${Base_Url}/posts.json`;
 
 const snackBar = (title, iconHtml, bgColor = "#439643", color = "#fff") => {
   Swal.fire({
-    title: `<div style="display: flex; align-items: center; justify-content: center; gap: 8px;">${iconHtml} ${title}</div>`,
+    title: `<div style="display: flex; align-items: center; justify-content:center; gap: 8px;">${iconHtml} ${title}</div>`,
     timer: 1500,
     width: "300px",
     padding: "0.5rem",
@@ -64,6 +64,7 @@ return new Promise((resolve,reject)=>{
     
     loader.classList.add('d-none')
     reject(`Network Error`)
+    snackBar("Network Error", "❌", "#d33");
   }
 })
 }
@@ -196,11 +197,16 @@ const onEdit = (ele)=>{
   makeApiCall('GET',Edit_URL , null)
 
   .then(res=>{
-     title.value = res.title,
-     body.value = res.body,
-     userId.value = res.userId,
-     sBtn.classList.add('d-none')
-     uBtn.classList.remove('d-none')
+     title.value = res.title;
+     body.value = res.body;
+     userId.value = res.userId;
+     sBtn.classList.add('d-none');
+     uBtn.classList.remove('d-none');
+     const scroll = () => userData.scrollIntoView({ block: "end", behavior: "instant" });
+     scroll();
+     //  const scroll = ()=>userData.scrollIntoView()
+     //  scroll() 
+    
   })
   
 }
